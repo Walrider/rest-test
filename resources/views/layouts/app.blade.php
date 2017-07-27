@@ -15,7 +15,7 @@
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
 <body>

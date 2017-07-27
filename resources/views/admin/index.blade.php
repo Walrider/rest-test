@@ -23,4 +23,17 @@
             </div>
         </div>
     </div>
+    <script>
+        $.ajax({
+            url: '/api/v1/publications?tag=Tag_m232',
+            type: "get",
+            headers: {
+                'Authorization':'Bearer ' + '{{Auth::user()->api_token}}',
+                'Content-Type': 'application/json'
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    </script>
 @endsection

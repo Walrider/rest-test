@@ -17,7 +17,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('123123'),
             'remember_token' => str_random(10),
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
+            'api_token' => str_random(60),
         ]);
     }
 }

@@ -25,8 +25,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Route::bind('tags', function ($value) {
+        Route::bind('tag', function ($value) {
             return \LoremPublishing\Tag::where('id', $value)->firstOrFail();
+        });
+
+        Route::bind('publication', function ($value) {
+            return \LoremPublishing\Publication::where('id', $value)->firstOrFail();
+        });
+
+        Route::bind('publicationAPI', function ($value) {
+            return \LoremPublishing\Publication::where('id', $value)->with('tags')->firstOrFail();
         });
     }
 

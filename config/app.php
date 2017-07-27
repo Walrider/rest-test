@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        XmlResponse\XmlResponseServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -23,6 +23,7 @@ $factory->define(LoremPublishing\User::class, function (Faker\Generator $faker) 
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'api_token' => str_random(60),
     ];
 });
 
@@ -30,7 +31,7 @@ $factory->define(LoremPublishing\User::class, function (Faker\Generator $faker) 
 $factory->define(LoremPublishing\Tag::class, function () {
 
     return [
-        'title' => 'tag_' . str_random(4),
+        'title' => 'Tag_' . str_random(4),
         'created_at' => Carbon::now()
     ];
 });

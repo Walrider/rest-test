@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group( ['prefix' => 'v1' ,'middleware' => ['auth:api']], function () {
+    Route::get('/publications', 'Api\PublicationsController@index')->name('api.publications.index');
+    Route::get('/publications/{publicationAPI}', 'Api\PublicationsController@show')->name('api.publications.show');
+
+    Route::post('/publications', 'Api\PublicationsController@store')->name('api.publications.store');
+
+    Route::put('/publications/{publication}', 'Api\PublicationsController@update')->name('api.publications.update');
+
+    Route::delete('/publications/{publication}', 'Api\PublicationsController@destroy')->name('api.publications.destroy');
 });

@@ -20,6 +20,10 @@ Auth::routes();
 Route::get('/admin', 'AdminDashboardController@index')
     ->name('dashboard');
 
+Route::get('/home', function (){
+    return redirect()->route('dashboard');
+});
+
 Route::resource('admin/publications', 'PublicationsController', ['except' => ['show']]);
 
 Route::resource('admin/tags', 'TagsController', ['except' => ['show']]);
