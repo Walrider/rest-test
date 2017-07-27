@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'AdminDashboardController@index')
+Route::get('/admin', 'AdminDashboardController@index')
     ->name('dashboard');
 
 Route::resource('admin/publications', 'PublicationsController', ['except' => ['show']]);

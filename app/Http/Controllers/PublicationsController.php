@@ -6,11 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use LoremPublishing\Events\PublicationUpdated;
 use LoremPublishing\Publication;
 use LoremPublishing\Tag;
 
 class PublicationsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -59,6 +70,7 @@ class PublicationsController extends Controller
             $publication->save();
         }
 
+        event(new PublicationUpdated($publication));
 
         return redirect()->route('publications.index');
     }
@@ -102,6 +114,7 @@ class PublicationsController extends Controller
             $publication->save();
         }
 
+        event(new PublicationUpdated($publication));
 
         return redirect()->route('publications.index');
     }
