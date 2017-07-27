@@ -12,7 +12,10 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+
+use Carbon\Carbon;
+
+$factory->define(LoremPublishing\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -20,5 +23,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+
+$factory->define(LoremPublishing\Tag::class, function () {
+
+    return [
+        'title' => 'tag_' . str_random(4),
+        'created_at' => Carbon::now()
     ];
 });

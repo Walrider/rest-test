@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace LoremPublishing\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'LoremPublishing\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -23,9 +23,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('tags', function ($value) {
+            return \LoremPublishing\Tag::where('id', $value)->firstOrFail();
+        });
     }
 
     /**
